@@ -1,9 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Login from './Login.jsx'
+import Root from './Root.jsx'
+import Dashboard from './Dashobard.jsx'
+
 import '../css/app.scss'
 
+const routes = [
+  {
+    path: "/dashboard",
+    component: Dashboard
+  }
+]
+
 ReactDOM.render(
-    <Login/>,
-    document.getElementById('root')
+  <Root/>,
+  document.getElementById('root')
 );

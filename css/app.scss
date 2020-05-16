@@ -1,12 +1,18 @@
-.loginBG {
+.loginContainer {
     >div {
         h1 {
             align-self: center;
+            margin: 0 0 30 0;
         };
     
+        padding: 30 100;
         background-color: white;
         display: flex;
         flex-direction: column;
+
+        button {
+            margin: 10 0;
+        }
     }
 
     background-color: #3a3a3a;
@@ -19,4 +25,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.dashboardContainer {
+    background-color: red;
 }
