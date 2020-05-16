@@ -30,11 +30,8 @@ module.exports = {
         exclude: /node_modules/,
         // use the babel-loader for transpiling JavaScript to a suitable format
         loader: 'babel-loader',
-        options: {
-          // attach the presets to the loader (most projects use .babelrc file instead)
-          presets: ["@babel/preset-env", "@babel/preset-react"]
-        }
-      }
+      },
+      { test: /\.css$/, use: [ 'style-loader', 'css-loader' ] }
     ]
   },
   // add a custom index.html as the template
