@@ -1,0 +1,22 @@
+.loginBG {
+    >div {
+        h1 {
+            align-self: center;
+        };
+    
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+    }
+
+    background-color: #3a3a3a;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
