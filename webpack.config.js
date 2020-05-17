@@ -12,7 +12,7 @@ module.exports = {
   devtool: "source-map",
 
   resolve: {
-    extensions: [".wasm", ".ts", ".tsx", ".mjs", ".cjs", ".js", ".json"],
+    extensions: [".wasm", ".ts", ".tsx", ".mjs", ".cjs", ".js", ".json", ".jsx"],
   },
 
   output: {
@@ -20,7 +20,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     // the filename of the JS bundle will be bundle.js
     filename: 'bundle.js',
-    publicPath: '/'
+    publicPath: ''
   },
   module: {
     rules: [
