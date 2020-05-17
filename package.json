@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --hot",
+    "start": "webpack-dev-server --inline --hot",
     "build": "webpack"
   },
   "repository": {
@@ -21,7 +21,8 @@
     "antd": "^4.2.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "recharts": "^1.8.5"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",

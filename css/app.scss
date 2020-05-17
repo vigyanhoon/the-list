@@ -1,32 +1,73 @@
 .loginContainer {
-    >div {
-        h1 {
-            align-self: center;
-            margin: 0 0 30 0;
-        };
-    
-        padding: 30 100;
-        background-color: white;
-        display: flex;
-        flex-direction: column;
+  >div {
+    h1 {
+      align-self: center;
+      margin: 0 0 30 0;
+    };
 
-        button {
-            margin: 10 0;
-        }
-    }
-
-    background-color: #3a3a3a;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-
+    padding: 30 100;
+    background-color: white;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+
+    button {
+      margin: 10 0;
+    }
+  }
+
+  background-color: #3a3a3a;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .dashboardContainer {
-    background-color: red;
+  padding: 20;
+  .cardContainer {
+    display: flex;
+    justify-content: space-between;
+    * {
+      color: white;
+    }
+    .ant-card {
+      width: 300;
+      cursor: pointer;
+    }
+  }
+  .blue {
+    background-color: #007bff;
+  }
+  .yellow {
+    background-color: #ffc107;
+  }
+  .green {
+    background-color: #28a745;
+  }
+  .red {
+    background-color: #dc3545;
+  }
+
+  .graphContainer{
+    margin: 20 0;
+    display: flex;
+    justify-content: space-between;
+    .ant-card {
+      flex: 0 0 48%;
+    }
+    .ant-card-head {
+      background-color: rgba(0, 0, 0, 0.03);
+    }
+    .graph1 {
+      
+    }
+    .graph2{
+      
+    }
+  }
 }
