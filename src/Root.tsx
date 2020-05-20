@@ -1,13 +1,13 @@
 import React from 'react';
-import Login from './Login.jsx'
-import Dashboard from './Dashobard.jsx'
+import Login from './Login';
+import Dashboard from './Dashobard'
 import {
   HashRouter as Router,
   Switch,
   Route,
 } from "react-router-dom";
 
-export default function Root() {
+const Root:React.FC<{}> = () => {
   return (
     <Router>
       <Switch>
@@ -21,3 +21,5 @@ export default function Root() {
     </Router>
   )
 }
+
+export default Root

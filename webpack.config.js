@@ -6,13 +6,13 @@ module.exports = {
   // the output bundle won't be optimized for production but suitable for development
   mode: 'development',
   // the app entry point is /src/index.js
-  entry: path.resolve(__dirname, 'src', 'index.js'),
+  entry: path.resolve(__dirname, 'src', 'index.tsx'),
 
   // Enable sourcemaps for debugging webpack's output.
   devtool: "source-map",
 
   resolve: {
-    extensions: [".wasm", ".ts", ".tsx", ".mjs", ".cjs", ".js", ".json", ".jsx"],
+    extensions: [".ts", ".tsx", ".js", ".json", ".jsx"],
   },
 
   output: {
@@ -43,7 +43,12 @@ module.exports = {
           'sass-loader',
         ],
       },
-      { test: /\.css$/, use: [ 'style-loader', 'css-loader' ] }
+      { test: /\.css$/, use: [ 'style-loader', 'css-loader' ] },
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      }
     ]
   },
   // add a custom index.html as the template

@@ -1,28 +1,28 @@
 import React from 'react';
 import { Card } from 'antd';
-import Graph1 from './Graph1.jsx';
-import Graph2 from './Graph2.jsx';
+import Graph1 from './Graph1';
+import Graph2 from './Graph2';
 
 export default function Dashboard() {
 
-  function cardClicked(e) {
-    console.log(e);
+  const cardClicked = (type:String) => {
+    console.log(type);
   }
 
   return (
     <div className='dashboardContainer'>
       <h1>Dashboard</h1>
       <div className='cardContainer'>
-        <Card className='blue' title='Blue' onClick={cardClicked.bind(this, 'blue')}>
+        <Card className='blue' title='Blue' onClick={() => cardClicked('blue')}>
           <p>Fine</p>
         </Card>
-        <Card className='yellow' title='Yellow' onClick={cardClicked.bind(this, 'yellow')}>
+        <Card className='yellow' title='Yellow' onClick={() => cardClicked('yellow')}>
           <p>Warning</p>
         </Card>
-        <Card className='green' title='Green' onClick={cardClicked.bind(this, 'green')}>
+        <Card className='green' title='Green' onClick={() => cardClicked('green')}>
           <p>Good</p>
         </Card>
-        <Card className='red' title='Red' onClick={cardClicked.bind(this, 'red')}>
+        <Card className='red' title='Red' onClick={() => cardClicked('red')}>
           <p>Bad</p>
         </Card>
       </div>

@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Root from './Root.jsx'
-import Dashboard from './Dashobard.jsx'
+import Root from './Root'
+import Dashboard from './Dashobard'
 
 import '../css/app.scss'
+import './App.css';
 
 const routes = [
   {
