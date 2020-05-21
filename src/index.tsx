@@ -4,7 +4,7 @@ import Root from './Root'
 import Dashboard from './Dashobard'
 
 import '../css/app.scss'
-import './App.css';
+import 'antd/dist/antd.css';
 
 const routes = [
   {
