@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
+  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
 } from 'recharts';
 
 function Graph2() {
@@ -29,20 +29,20 @@ function Graph2() {
   ];
 
   return (
-    <BarChart
-      width={600}
-      height={300}
-      data={data}
-      margin={{
-        top: 5, right: 30, left: 20, bottom: 5,
-      }}>
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="name" />
-      <YAxis />
-      <Tooltip cursor={{ fill: 'transparent' }}/>
-      <Legend />
-      <Bar dataKey="pv" fill="#007bff" />
-    </BarChart>
+    <ResponsiveContainer height={300} width='100%'>
+      <BarChart
+        data={data}
+        margin={{
+          top: 5, right: 30, left: 20, bottom: 5,
+        }}>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip cursor={{ fill: 'transparent' }}/>
+        <Legend />
+        <Bar dataKey="pv" fill="#007bff" />
+      </BarChart>
+    </ResponsiveContainer>
   );
 }
 
