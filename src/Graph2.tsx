@@ -3,7 +3,7 @@ import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
 } from 'recharts';
 
-function Graph2() {
+export const Graph2:React.FC<{}> = () => {
   const data = [
     {
       name: 'Page A', uv: 4000, pv: 2400, amt: 2400,
@@ -45,5 +45,3 @@ function Graph2() {
     </ResponsiveContainer>
   );
 }
-
-export default Graph2

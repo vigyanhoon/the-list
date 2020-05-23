@@ -1,12 +1,14 @@
 import React from 'react';
 import { Card } from 'antd';
-import Graph1 from './Graph1';
-import Graph2 from './Graph2';
+import {Graph1} from './Graph1';
+import {Graph2} from './Graph2';
+import { useHistory } from "react-router-dom";
 
-export default function Dashboard() {
-
+export const Dashboard:React.FC<{}> = () => {
+  
+  const history = useHistory();
   const cardClicked = (type:String) => {
-    console.log(type);
+    history.push({pathname:"/details/" + type, state:{type}})
   }
 
   return (

@@ -3,7 +3,7 @@ import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
 } from 'recharts';
 
-function Graph1() {
+export const Graph1:React.FC<{}> = () => {
   const data = [
     {
       name: 'Page A', uv: 4000, pv: 2400, amt: 2400,
@@ -46,5 +46,3 @@ function Graph1() {
     </ResponsiveContainer>
   );
 }
-
-export default Graph1

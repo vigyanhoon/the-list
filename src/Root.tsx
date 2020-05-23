@@ -1,25 +1,25 @@
 import React from 'react';
 import Login from './Login';
-import Dashboard from './Dashobard'
+import {Dashboard} from './Dashobard'
+import {Header} from './Header'
+import {CardDetails} from './CardDetails'
+import {NoMatch} from './NoMatch'
 import {
-  HashRouter as Router,
+  HashRouter,
   Switch,
-  Route,
+  Route
 } from "react-router-dom";
 
-const Root:React.FC<{}> = () => {
+export const Root:React.FC<{}> = () => {
   return (
-    <Router>
+    <HashRouter>
+      <Header/>
       <Switch>
-        <Route exact path="/">
-          <Login />
-        </Route>
-        <Route path="/dashboard">
-          <Dashboard />
-        </Route>
+        <Route exact path="/" component={Login}/>
+        <Route exact path="/dashboard" component={Dashboard}/>
+        <Route path="/details/:type" component={CardDetails}/>
+        <Route component={NoMatch} />
       </Switch>
-    </Router>
+    </HashRouter>
   )
 }
-
-export default Root

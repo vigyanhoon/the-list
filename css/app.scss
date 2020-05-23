@@ -43,7 +43,10 @@
       flex-grow: 1;
       margin: 20;
       cursor: pointer;
-      min-width: 250;
+      border-radius: 7px;
+      @media only screen and (max-width: 1000px) {
+        min-width: 300;
+      }
     }
   }
   .blue {
