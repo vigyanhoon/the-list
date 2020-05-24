@@ -4,6 +4,7 @@ import {Dashboard} from './Dashobard'
 import {Header} from './Header'
 import {CardDetails} from './CardDetails'
 import {NoMatch} from './NoMatch'
+import {Page} from './Page'
 import {
   HashRouter,
   Switch,
@@ -22,6 +23,7 @@ export const Root:React.FC<{}> = () => {
         <Route exact path="/" component={Login}/>
         <Route exact path="/dashboard" component={Dashboard}/>
         <Route path="/details/:type" component={CardDetails}/>
+        <Route path="/page" component={Page}/>
         <Route component={NoMatch} />
       </Switch>
     </HashRouter>
