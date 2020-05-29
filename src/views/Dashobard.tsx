@@ -3,8 +3,12 @@ import { Card } from 'antd';
 import {Graph1} from './Graph1';
 import {Graph2} from './Graph2';
 import { useHistory } from "react-router-dom";
+import { useDispatch } from 'react-redux'
+import store, { getTableData } from '../store';
+import {fetchData} from '../store/tableData/actions'
 
 export const Dashboard:React.FC<{}> = () => {
+  const dispatch = useDispatch()
   
   const history = useHistory();
   const cardClicked = (type:String) => {
@@ -36,6 +40,10 @@ export const Dashboard:React.FC<{}> = () => {
           <Graph2/>
         </Card>
       </div>
+      <p>{ getTableData(store.getState()).num }</p>
+      <button onClick={() => dispatch(fetchData())}>
+        Add 1
+      </button>
     </div>
   )
 }
