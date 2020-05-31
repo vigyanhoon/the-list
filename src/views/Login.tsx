@@ -4,7 +4,7 @@ import { Input } from 'antd';
 import { Button } from 'antd';
 import { useHistory } from "react-router-dom";
 
-export const Login:React.FC<{}> = () => {
+const Login:React.FC<{}> = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   let history = useHistory()

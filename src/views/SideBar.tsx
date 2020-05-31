@@ -6,7 +6,7 @@ interface Visible {
   visible: boolean
 }
 
-export const SideBar:React.FC<Visible> = props => {
+const SideBar:React.FC<Visible> = props => {
   const history = useHistory();
 
   const onClose = () => {
@@ -37,3 +37,5 @@ export const SideBar:React.FC<Visible> = props => {
     </Drawer>
   )
 }
+
+export default SideBar

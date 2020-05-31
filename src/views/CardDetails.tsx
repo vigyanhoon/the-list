@@ -3,11 +3,11 @@ import {
   useLocation
 } from "react-router-dom";
 
-export const CardDetails:React.FC<{}> = () => {
+const CardDetails:React.FC<{}> = () => {
   const location = useLocation();
   const state = location.state as any;
-  const style:any = {
-    'background-color': state.type
+  const style: React.CSSProperties = {
+    'backgroundColor': state.type
   }
   return (
     <div style={style}>
@@ -15,3 +15,5 @@ export const CardDetails:React.FC<{}> = () => {
     </div>
   )
 }
+
+export default CardDetails

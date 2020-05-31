@@ -1,18 +1,24 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Card } from 'antd';
-import {Graph1} from './Graph1';
-import {Graph2} from './Graph2';
+import Graph1 from './Graph1';
+import Graph2 from './Graph2';
 import { useHistory } from "react-router-dom";
-import { useDispatch } from 'react-redux'
-import store, { getTableData } from '../store';
+import { useDispatch, useSelector } from 'react-redux'
 import {fetchData} from '../store/tableData/actions'
+import {AppState} from '../store'
 
-export const Dashboard:React.FC<{}> = () => {
+const Dashboard:React.FC<{}> = () => {
   const dispatch = useDispatch()
+
+  const {num, num2} = useSelector((state:AppState) => state.tableData)
   
   const history = useHistory();
   const cardClicked = (type:String) => {
     history.push({pathname:"/details/" + type, state:{type}})
+  }
+
+  const update = ()=>  {
+    dispatch(fetchData())
   }
 
   return (
@@ -40,10 +46,13 @@ export const Dashboard:React.FC<{}> = () => {
           <Graph2/>
         </Card>
       </div>
-      <p>{ getTableData(store.getState()).num }</p>
-      <button onClick={() => dispatch(fetchData())}>
+      <p>{ num }</p>
+      <p>{ num2}</p>
+      <button onClick={update}>
         Add 1
       </button>
     </div>
   )
 }
+
+export default Dashboard

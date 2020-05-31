@@ -6,7 +6,7 @@ export const fetchData = () => {
   }
 }
 
-export const refreshDAta = () => {
+export const refreshData = () => {
   return {
     type: REFRESH_DATA,
   }

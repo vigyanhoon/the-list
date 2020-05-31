@@ -3,6 +3,7 @@ export const REFRESH_DATA = 'REFRESH_DATA';
 
 export interface dataState {
   num:number
+  num2:number
 }
 
 interface fetchDataAction {

@@ -1,10 +1,10 @@
 import React from 'react';
 import Login from './Login';
-import {Dashboard} from './Dashobard'
-import {Header} from './Header'
-import {CardDetails} from './CardDetails'
-import {NoMatch} from './NoMatch'
-import {Page} from './Page'
+import Dashboard from './Dashboard'
+import Header from './Header'
+import CardDetails from './CardDetails'
+import NoMatch from './NoMatch'
+import Page from './Page'
 import {
   HashRouter,
   Switch,

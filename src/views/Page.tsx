@@ -1,7 +1,11 @@
 import React from 'react';
 
-export const Page:React.FC<{}> = () => {
+const Page:React.FC<{}> = () => {
   return (
-    <div>inner page</div>
+    <div>
+      <p>inner page</p>
+    </div>
   )
 }
+
+export default Page

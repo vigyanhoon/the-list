@@ -1,9 +1,9 @@
 import React from 'react'
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {SideBar} from './SideBar'
+import SideBar from './SideBar'
 
-export const Header:React.FC<{}> = () => {
+const Header:React.FC<{}> = () => {
 
   const [drawerVisible, setDrawerVisible] = useState(false)
 
@@ -20,3 +20,5 @@ export const Header:React.FC<{}> = () => {
     </div>
   )
 }
+
+export default Header

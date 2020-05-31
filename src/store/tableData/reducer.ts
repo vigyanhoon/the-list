@@ -6,7 +6,8 @@ import {
 } from './types'
 
 const initialState: dataState = {
-  num: 5,
+  num: 1,
+  num2: 2
 };
 
 const tableDataReducer = (
@@ -18,7 +19,8 @@ const tableDataReducer = (
     case FETCH_DATA:
       return {
         ...state,
-        num: 10
+        num: 3,
+        num2: 4
       }
     default:
       return state
