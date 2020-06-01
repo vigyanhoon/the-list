@@ -1,10 +1,12 @@
 import tableDataReducer from './tableData/reducer'
+import countriesReducer from './countries/reducer'
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 const rootReducer = combineReducers({
-  tableData: tableDataReducer
+  tableData: tableDataReducer,
+  countriesData: countriesReducer
 });
 
 export type AppState = ReturnType<typeof rootReducer>;

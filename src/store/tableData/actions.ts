@@ -5,9 +5,3 @@ export const fetchData = () => {
     type: FETCH_DATA,
   }
 }
-
-export const refreshData = () => {
-  return {
-    type: REFRESH_DATA,
-  }
-}

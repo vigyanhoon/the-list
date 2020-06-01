@@ -1,21 +1,26 @@
 import React, {useEffect, useState} from 'react';
-import { Card } from 'antd';
+import { Card, Spin } from 'antd';
 import Graph1 from './Graph1';
 import Graph2 from './Graph2';
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux'
 import {fetchData} from '../store/tableData/actions'
 import {AppState} from '../store'
+import {getCountries} from '../store/countries/actions'
+import {Country} from '../store/countries/types'
 
 const Dashboard:React.FC<{}> = () => {
   const dispatch = useDispatch()
-
-  const {num, num2} = useSelector((state:AppState) => state.tableData)
+  const {data, error, loading} = useSelector((state:AppState) => state.countriesData)
   
   const history = useHistory();
   const cardClicked = (type:String) => {
     history.push({pathname:"/details/" + type, state:{type}})
   }
+
+  useEffect(()=>{
+    dispatch(getCountries())
+  }, [])
 
   const update = ()=>  {
     dispatch(fetchData())
@@ -46,11 +51,20 @@ const Dashboard:React.FC<{}> = () => {
           <Graph2/>
         </Card>
       </div>
-      <p>{ num }</p>
-      <p>{ num2}</p>
-      <button onClick={update}>
-        Add 1
-      </button>
+      <Spin spinning={loading} delay={500}>
+        <div>
+          {
+            data.map((country:Country,index:number)=>
+            {
+              return <p key={index}>{country.Rank}</p>
+            }) 
+          }
+        </div>
+        <button onClick={update}>
+          Add 1
+        </button>
+      </Spin>
+      
     </div>
   )
 }
