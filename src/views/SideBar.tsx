@@ -1,27 +1,16 @@
 import React from 'react';
 import { Drawer } from 'antd';
-import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 interface Visible {
   visible: boolean
 }
 
 const SideBar:React.FC<Visible> = props => {
-  const history = useHistory();
-
   const onClose = () => {
     document.body.removeAttribute('style'); //fix for creating scrollbar blank area
     console.log('drawer closed')
   };
-
-  const openPage = () => {
-    document.body.removeAttribute('style'); //fix for creating scrollbar blank area
-    history.push({pathname:"/page"})
-  }
-
-  const openDashboard = () => {
-    history.push({pathname:"/dashboard"})
-  }
 
   return (
     <Drawer
@@ -31,9 +20,17 @@ const SideBar:React.FC<Visible> = props => {
       onClose={onClose}
       visible={props.visible}>
 
-      <p onClick={openPage}>Inner page</p>
-      <p onClick={openDashboard}>Dashboard</p>
-      <p onClick={openPage}>Menu Item</p>
+      <Link to={{pathname:"/page"}}>
+        <p>Inner page</p>
+      </Link>
+
+      <Link to={{pathname:"/dashboard"}}>
+        <p>Dashboard</p>
+      </Link>
+
+      <Link to={{pathname:"/page"}}>
+        <p>Menu Item</p>
+      </Link>
     </Drawer>
   )
 }
