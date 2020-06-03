@@ -22,25 +22,29 @@
     .ant-card {
       border-radius: 7px;
     }
-  }
 
-  .blue {
-    background-color: #007bff;
-  }
-
-  .yellow {
-    background-color: #ffc107;
-  }
-
-  .green {
-    background-color: #28a745;
-  }
+    .blue {
+      background-color: #007bff;
+    }
   
-  .red {
-    background-color: #dc3545;
+    .yellow {
+      background-color: #ffc107;
+    }
+  
+    .green {
+      background-color: #28a745;
+    }
+  
+    .red {
+      background-color: #dc3545;
+    }
   }
 
   .graphContainer{
+    .ant-card-head {
+      background-color: rgba(0, 0, 0, 0.03);
+    }
+
     margin: 20 0;
     display: flex;
     justify-content: space-between;
@@ -64,9 +68,24 @@
         flex: 1;
       }
     }
+  }
+
+  .coutriesCard {
+    margin: 20;
     
     .ant-card-head {
       background-color: rgba(0, 0, 0, 0.03);
+    }
+
+    .coutriesTable{
+      border-spacing: 5px;
+      border: 1px solid black;
+      
+      th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 15px;
+      }
     }
   }
 }

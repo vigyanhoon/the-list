@@ -9,6 +9,7 @@ export interface Country {
   Population:string;
   Date:string;
   Source:string;
+  'Population %':string
 }
 
 export interface dataState {
