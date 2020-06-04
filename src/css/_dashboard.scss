@@ -77,9 +77,35 @@
       background-color: rgba(0, 0, 0, 0.03);
     }
 
+    .ant-card-body {
+      color:black;
+    }
+
+    .filters {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20;
+
+      .ant-dropdown-link {
+        margin: 0 10;
+      }
+
+      .searchFilter {
+        display: flex;
+        align-items: center;
+
+        p {
+          margin: 0 10;
+        }
+      }
+    }
+
     .coutriesTable{
       border-spacing: 5px;
       border: 1px solid black;
+      width: 100%;
+      color: black;
       
       th, td {
         border: 1px solid black;
