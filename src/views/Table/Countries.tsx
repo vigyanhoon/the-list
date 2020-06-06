@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {AppState} from '../store'
+import {AppState} from '../../store'
 import { useDispatch, useSelector } from 'react-redux'
-import {getCountries} from '../store/countries/actions'
-import {Country} from '../store/countries/types'
-import { Spin, message, Card, Dropdown, Menu, Input } from 'antd';
+import {getCountries} from '../../store/countries/actions'
+import {Country} from '../../store/countries/types'
+import { Spin, message, Card, Input } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import NumberMenu from './Menu'
 
 const Countries:React.FC<{}> = () => {
   const dispatch = useDispatch()
@@ -42,26 +43,6 @@ const Countries:React.FC<{}> = () => {
     return countriesData.slice(0, rowCount)
   }
 
-  const menu = (
-    <Menu>
-      <Menu.Item>
-        <a target="_blank" rel="noopener noreferrer" onClick={()=>setRowCount(10)}>
-          10
-      </a>
-      </Menu.Item>
-      <Menu.Item>
-        <a target="_blank" rel="noopener noreferrer" onClick={() => setRowCount(50)}>
-          50
-      </a>
-      </Menu.Item>
-      <Menu.Item>
-        <a target="_blank" rel="noopener noreferrer" onClick={() => setRowCount(100)}>
-          100
-      </a>
-      </Menu.Item>
-    </Menu>
-  );
-
   return (
     <div>
       <Spin spinning={loading} delay={500}>
@@ -69,11 +50,7 @@ const Countries:React.FC<{}> = () => {
           <div className='filters'>
             <label>
               Show
-              <Dropdown overlay={menu} trigger={['click']}>
-                <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
-                  {rowCount}
-                </a>
-              </Dropdown>
+              <NumberMenu setRowCount={setRowCount} rowCount={rowCount}/>
               Entries
             </label>
             <div className='searchFilter'>
