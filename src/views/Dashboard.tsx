@@ -3,7 +3,7 @@ import { Card } from 'antd';
 import Graph1 from './Graph1';
 import Graph2 from './Graph2';
 import { useHistory, Link } from "react-router-dom";
-import Countries from './Table/Countries'
+import CountriesTable from './Table/CountriesTable'
 
 const Dashboard:React.FC<{}> = () => {
   const history = useHistory();
@@ -41,7 +41,7 @@ const Dashboard:React.FC<{}> = () => {
           <Graph2/>
         </Card>
       </div>
-      <Countries/>
+      <CountriesTable/>
     </div>
   )
 }

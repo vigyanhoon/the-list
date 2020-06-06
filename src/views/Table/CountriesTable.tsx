@@ -6,11 +6,13 @@ import {Country} from '../../store/countries/types'
 import { Spin, message, Card, Input } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import NumberMenu from './Menu'
+import TablePagination from './Pagination'
 
-const Countries:React.FC<{}> = () => {
+const CountriesTable:React.FC<{}> = () => {
   const dispatch = useDispatch()
   const {data, error, loading} = useSelector((state:AppState) => state.countriesData)
   const [rowCount, setRowCount] = useState(10)
+  const [currentPage, setCurrentPage] = useState(1)
   const [searchedText, setSearchedText] = useState('')
 
   useEffect(()=>{
@@ -22,6 +24,11 @@ const Countries:React.FC<{}> = () => {
       message.error(error);
     }
   }, [error])
+
+  const updateRowCount = (count:number) => {
+    setRowCount(count)
+    setCurrentPage(1)
+  }
 
   const getFilteredData = () => {
     let countriesData:Country[] = [...data];
@@ -40,7 +47,10 @@ const Countries:React.FC<{}> = () => {
       })
     }
 
-    return countriesData.slice(0, rowCount)
+    const startIndex = (currentPage-1)*rowCount
+    const endIndex = currentPage*rowCount
+    console.log(startIndex, endIndex)
+    return countriesData.slice(startIndex, endIndex)
   }
 
   return (
@@ -50,7 +60,7 @@ const Countries:React.FC<{}> = () => {
           <div className='filters'>
             <label>
               Show
-              <NumberMenu setRowCount={setRowCount} rowCount={rowCount}/>
+              <NumberMenu setRowCount={updateRowCount} rowCount={rowCount}/>
               Entries
             </label>
             <div className='searchFilter'>
@@ -91,10 +101,13 @@ const Countries:React.FC<{}> = () => {
               }
             </tbody>
           </table>
+          <TablePagination current={currentPage} total={data.length} pageSize={rowCount}
+            onChange={(page) => setCurrentPage(page)}/>
+          {currentPage}
         </Card>
       </Spin>
     </div>
   )
 }
 
-export default Countries
+export default CountriesTable
