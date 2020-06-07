@@ -103,7 +103,6 @@ const CountriesTable:React.FC<{}> = () => {
           </table>
           <TablePagination current={currentPage} total={data.length} pageSize={rowCount}
             onChange={(page) => setCurrentPage(page)}/>
-          {currentPage}
         </Card>
       </Spin>
     </div>
