@@ -1,5 +1,5 @@
 # the-list
-a project to add, modify, delete list with nodejs backend
+A frontend project with react, redux, typescript, hooks
 
 A simple project to fetch, modify plain lists
 
