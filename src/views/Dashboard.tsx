@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card } from 'antd';
+import Card from 'antd/es/card';
 import Graph1 from './Graph1';
 import Graph2 from './Graph2';
 import { useHistory, Link } from "react-router-dom";

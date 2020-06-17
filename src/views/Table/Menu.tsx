@@ -1,5 +1,6 @@
 import React from 'react';
-import { Dropdown, Menu, } from 'antd';
+import Dropdown from 'antd/es/dropdown';
+import Menu from 'antd/es/menu';
 
 interface Props {
   rowCount:number;

@@ -2,13 +2,13 @@ const path = require('path');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require('terser-webpack-plugin');
-const CleanWebpackPlugin = require("clean-webpack-plugin");
+const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
-module.exports = merge(common, {
+module.exports = {
   mode: 'production',
   entry: path.resolve(__dirname, 'src', 'index.tsx'),
-  devtool: "source-map",
 
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".json", ".jsx"],
@@ -16,18 +16,30 @@ module.exports = merge(common, {
 
   output: {
     filename: "[name].[contentHash].bundle.js",
+    chunkFilename: '[name].bundle.js',
     path: path.resolve(__dirname, "dist")
   },
 
   module: {
     rules: [
       {
-        test: /\.scss$/,
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+      },
+      {
+        test: /\.s[ac]ss$/i,
         use: [
-          MiniCssExtractPlugin.loader, //3. Extract css into files
-          "css-loader", //2. Turns css into commonjs
-          "sass-loader" //1. Turns sass into css
-        ]
+          'style-loader',
+          'css-loader',
+          'sass-loader',
+        ],
+      },
+      { test: /\.css$/, use: ['style-loader', 'css-loader'] },
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
       }
     ]
   },
@@ -35,7 +47,8 @@ module.exports = merge(common, {
   plugins: [
     new HtmlWebpackPlugin({ template: path.resolve(__dirname, 'public', 'index.html') }),
     new MiniCssExtractPlugin({ filename: "[name].[contentHash].css" }),
-    new CleanWebpackPlugin()
+    new CleanWebpackPlugin(),
+    new BundleAnalyzerPlugin()
   ],
 
   optimization: {
@@ -52,5 +65,17 @@ module.exports = merge(common, {
         },
       }),
     ],
-  },
-});
+    splitChunks: {
+      chunks: 'all',
+      maxInitialRequests: Infinity,
+      minSize: 0,
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendor',
+          chunks: 'all'
+        }
+      }
+    }
+  }
+};

@@ -3,7 +3,10 @@ import {AppState} from '../../store'
 import { useDispatch, useSelector } from 'react-redux'
 import {getCountries} from '../../store/countries/actions'
 import {Country} from '../../store/countries/types'
-import { Spin, message, Card, Input } from 'antd';
+import Spin from 'antd/es/spin';
+import message from 'antd/es/message';
+import Card from 'antd/es/card';
+import Input from 'antd/es/input';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import NumberMenu from './Menu'
 import TablePagination from './Pagination'

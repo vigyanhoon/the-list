@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
-import { Input } from 'antd';
-import { Button } from 'antd';
+import Input from 'antd/es/input';
+import Button from 'antd/es/button';
 import { useHistory } from "react-router-dom";
 
 const Login:React.FC<{}> = () => {
