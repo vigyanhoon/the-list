@@ -5,6 +5,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = {
   mode: 'production',
@@ -16,7 +17,7 @@ module.exports = {
 
   output: {
     filename: "[name].[contentHash].bundle.js",
-    chunkFilename: '[name].bundle.js',
+    chunkFilename: '[name].[contentHash].bundle.js',
     path: path.resolve(__dirname, "dist")
   },
 
@@ -28,14 +29,13 @@ module.exports = {
         loader: 'babel-loader',
       },
       {
-        test: /\.s[ac]ss$/i,
+        test: /\.(sass|scss|css)$/,
         use: [
-          'style-loader',
+          MiniCssExtractPlugin.loader,
           'css-loader',
           'sass-loader',
         ],
       },
-      { test: /\.css$/, use: ['style-loader', 'css-loader'] },
       {
         test: /\.tsx?$/,
         use: 'ts-loader',
@@ -46,9 +46,13 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({ template: path.resolve(__dirname, 'public', 'index.html') }),
-    new MiniCssExtractPlugin({ filename: "[name].[contentHash].css" }),
+    new MiniCssExtractPlugin({
+      filename: "[name].[contentHash].css",
+      chunkFilename: '[name].[contentHash].css',
+    }),
     new CleanWebpackPlugin(),
-    new BundleAnalyzerPlugin()
+    new CompressionPlugin()
+    // new BundleAnalyzerPlugin()
   ],
 
   optimization: {
