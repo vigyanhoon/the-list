@@ -51,12 +51,13 @@ module.exports = {
       chunkFilename: '[name].[contentHash].css',
     }),
     new CleanWebpackPlugin(),
-    new CompressionPlugin()
+    // new CompressionPlugin()
     // new BundleAnalyzerPlugin()
   ],
 
   optimization: {
     minimize: true,
+    usedExports: true,
     minimizer: [
       new OptimizeCssAssetsPlugin(),
       new TerserPlugin(),

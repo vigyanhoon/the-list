@@ -8,10 +8,10 @@ import './css/app.scss'
 import 'antd/dist/antd.css';
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { fas } from '@fortawesome/free-solid-svg-icons'
-import { far } from '@fortawesome/free-regular-svg-icons'
-library.add(fas)
-library.add(far)
+import { faBars } from '@fortawesome/free-solid-svg-icons/faBars'
+import { faTimesCircle } from '@fortawesome/free-regular-svg-icons/faTimesCircle'
+library.add(faBars)
+library.add(faTimesCircle)
 
 ReactDOM.render(
   <Provider store={store}>
