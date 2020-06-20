@@ -60,13 +60,15 @@ module.exports = {
     usedExports: true,
     minimizer: [
       new OptimizeCssAssetsPlugin(),
-      new TerserPlugin(),
+      new TerserPlugin({
+        terserOptions: { output: { ascii_only: true } }
+      }),
       new HtmlWebpackPlugin({
         template: path.resolve(__dirname, 'public', 'index.html'),
         minify: {
           removeAttributeQuotes: true,
           collapseWhitespace: true,
-          removeComments: true
+          removeComments: true,
         },
       }),
     ],
