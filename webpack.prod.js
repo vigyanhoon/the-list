@@ -6,6 +6,7 @@ const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const CompressionPlugin = require('compression-webpack-plugin');
+var ManifestPlugin = require('webpack-manifest-plugin');
 
 module.exports = {
   mode: 'production',
@@ -51,8 +52,9 @@ module.exports = {
       chunkFilename: '[name].[contentHash].css',
     }),
     new CleanWebpackPlugin(),
-    // new CompressionPlugin()
-    // new BundleAnalyzerPlugin()
+    new ManifestPlugin(),
+    // new CompressionPlugin(),
+    // new BundleAnalyzerPlugin(),
   ],
 
   optimization: {
@@ -83,6 +85,9 @@ module.exports = {
           chunks: 'all'
         }
       }
-    }
+    },
+    runtimeChunk: {
+      name: "manifest",
+    },
   }
 };
