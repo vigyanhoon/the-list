@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import {Root} from './views/Root'
 import { Provider } from 'react-redux'
 import store from './store'
+import {initFirebase} from './firebaseUtil/firebase'
 
 import './css/app.scss'
 import 'antd/dist/antd.css';
@@ -12,6 +13,7 @@ import { faBars } from '@fortawesome/free-solid-svg-icons/faBars'
 import { faTimesCircle } from '@fortawesome/free-regular-svg-icons/faTimesCircle'
 library.add(faBars)
 library.add(faTimesCircle)
+initFirebase()
 
 ReactDOM.render(
   <Provider store={store}>
