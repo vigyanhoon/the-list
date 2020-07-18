@@ -2,14 +2,31 @@ import React from 'react'
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import SideBar from './SideBar'
+import Button from 'antd/es/button';
+import message from 'antd/es/message'
+import firebase from 'firebase/app'
+import { useHistory } from "react-router-dom";
 
 const Header:React.FC<{}> = () => {
 
   const [drawerVisible, setDrawerVisible] = useState(false)
+  const history = useHistory();
 
   const toggerDrawer = ()=> {
     setDrawerVisible(currentDrawerVisible => !currentDrawerVisible)
   }
+
+  const logout = () => {
+    firebase.auth().signOut().then(function () {
+      history.push("/")
+    }).catch(function (error) {
+      showError('Logout failed ' + error);
+    });
+  }
+
+  const showError = (text:string) => {
+    message.error(text);
+  };
 
   return (
     <div className='header'>
@@ -17,6 +34,8 @@ const Header:React.FC<{}> = () => {
         <FontAwesomeIcon icon={['fas', 'bars'] } size='2x'/>
         <SideBar visible={drawerVisible}></SideBar>
       </div>
+      <Button type='primary' onClick={logout}>Logout</Button>
+
     </div>
   )
 }

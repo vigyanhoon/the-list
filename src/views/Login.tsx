@@ -2,8 +2,10 @@ import React from 'react';
 import { useState } from 'react';
 import Input from 'antd/es/input';
 import Button from 'antd/es/button';
+import message from 'antd/es/message'
 import { useHistory } from "react-router-dom";
-import firebase from 'firebase'
+import firebase from 'firebase/app'
+import 'firebase/auth'
 
 const Login:React.FC<{}> = () => {
   const [username, setUsername] = useState('')
@@ -11,22 +13,24 @@ const Login:React.FC<{}> = () => {
   let history = useHistory()
 
   const login = ()=> {
-    firebase.auth().signInWithEmailAndPassword('admin@admin.com', 'adminadmin').catch(function (error) {
+    firebase.auth().signInWithEmailAndPassword(username, password).catch(function (error) {
       const errorCode = error.code;
       const errorMessage = error.message;
-      console.log(errorCode,errorMessage)
+      showError(errorCode + ' ' + errorMessage)
     });
-    console.log('login pressed', username, password)
-    // history.push("/dashboard")
   }
 
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
-      console.log(user.displayName);
+      history.push("/dashboard")
     } else {
       console.log('logged out')
     }
   });
+
+  const showError = (text: string) => {
+    message.error(text);
+  };
 
   return (
     <div className='loginContainer'>

@@ -8,13 +8,21 @@ import Page from './Page'
 import {
   HashRouter,
   Switch,
-  Route
+  Route,
+  Prompt
 } from "react-router-dom";
 
 export const Root:React.FC<{}> = () => {
+
+  const confirm = (message: any, callback: any) => {
+    console.log('in confirm', window.location.href)
+    callback(true)
+  }
+
   return (
-    <HashRouter>
+    <HashRouter getUserConfirmation={confirm}>
       <Header/>
+      <Prompt message="Are you sure you want to leave?" />
       <Switch>
         <Route exact path="/" component={Login}/>
         <Route exact path="/dashboard" component={Dashboard}/>
