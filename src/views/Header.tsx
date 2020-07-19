@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import SideBar from './SideBar'
@@ -16,12 +16,25 @@ const Header:React.FC<{}> = () => {
     setDrawerVisible(currentDrawerVisible => !currentDrawerVisible)
   }
 
-  const logout = () => {
-    firebase.auth().signOut().then(function () {
-      history.push("/")
-    }).catch(function (error) {
-      showError('Logout failed ' + error);
+  useEffect(()=>{
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        console.log('current user is ' + firebase.auth().currentUser?.email)
+      } else {
+        history.push('/')
+      }
     });
+  })
+
+  const logout = () => {
+    const isOK = window.confirm('Are you sure?')
+    if (isOK) {
+      firebase.auth().signOut().then(function () {
+        history.push('/')
+      }).catch(function (error) {
+        showError('Logout failed ' + error);
+      });
+    }
   }
 
   const showError = (text:string) => {

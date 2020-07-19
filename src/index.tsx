@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import {Root} from './views/Root'
 import { Provider } from 'react-redux'
 import store from './store'
-import {initFirebase} from './firebaseUtil/firebase'
+import {initFirebase} from '../firebaseUtil/firebase'
 
 import './css/app.scss'
 import 'antd/dist/antd.css';
